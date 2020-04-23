@@ -1,6 +1,7 @@
 package com.ajsherrell.draganddraw
 
 import android.content.Context
+import android.graphics.Paint
 import android.graphics.PointF
 import android.util.AttributeSet
 import android.util.Log
@@ -14,6 +15,12 @@ class BoxDrawingView(context: Context, attrs: AttributeSet? = null):
 
     private var currentBox: Box? = null
     private val boxen = mutableListOf<Box>()
+    private val boxPaint = Paint().apply {
+        color = 0x22ff0000.toInt()
+    }
+    private val backgroundPaint = Paint().apply {
+        color = 0xfff8efe0.toInt()
+    }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val current = PointF(event.x, event.y)
