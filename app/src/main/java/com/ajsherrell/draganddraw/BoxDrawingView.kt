@@ -1,6 +1,7 @@
 package com.ajsherrell.draganddraw
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PointF
 import android.util.AttributeSet
@@ -55,6 +56,15 @@ class BoxDrawingView(context: Context, attrs: AttributeSet? = null):
         currentBox?.let {
             it.end = current
             invalidate()
+        }
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        //fill in the background
+        canvas?.drawPaint(backgroundPaint)
+
+        boxen.forEach { box ->
+            canvas?.drawRect(box.left, box.top, box.right, box.bottom, boxPaint)
         }
     }
 
